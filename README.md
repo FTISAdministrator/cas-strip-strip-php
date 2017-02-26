@@ -3,6 +3,7 @@
 [![Packagist Pre Release](https://img.shields.io/packagist/vpre/ftis-admin/cas-min-min.svg?style=flat-square)](https://github.com/ftis-admin/cas-min-min-php)
 [![GitHub release](https://img.shields.io/github/release/ftis-admin/cas-min-min-php.svg?style=flat-square)](https://github.com/ftis-admin/cas-min-min-php)
 [![GitHub tag](https://img.shields.io/github/tag/ftis-admin/cas-min-min-php.svg?style=flat-square)](https://github.com/ftis-admin/cas-min-min-php)
+
 Dibuat untuk membantu kita fetching data dari sitenya UNPAR
 yang butuh login terlebih dahulu (CAS).
 
