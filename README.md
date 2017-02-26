@@ -32,7 +32,7 @@ include('vendor/autoload.php');
 
 ## Cara menggunakan
 
-Buat servicenya dulu, baru login-kan pake `CASMinMin::do_login()`.
+Buat servicenya dulu, baru login-kan pake `CASMinMin::login()`.
 ```php
 use Onlyongunz\CASMinMin;
 // buat service
@@ -54,6 +54,4 @@ Dokumentasi lengkap dari sevice-service yang ada akan di tambahkan segera.
 Dokumen lengkap bisa di cek di [sini](CONTRIBUTING.md).
 
 ## Current ToDos
-- Service Base
-- Login with CAS
 - Support for Services API.
