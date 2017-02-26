@@ -95,7 +95,7 @@ class CASMinMin {
         ]);
 
         parse_str(parse_url($resp->getHeader("Location")[0], PHP_URL_QUERY), $queries);
-        $service->done_login($queries);
+        $service->done_login($queries['ticket']);
     }
 
     public function login(Services\Service $service=null){
