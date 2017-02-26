@@ -1,0 +1,21 @@
+{
+    "name": "onlyongunz/cas-min-min-php",
+    "description": "CAS UNPAR interface for php",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Gunawan Christianto",
+            "email": "gunawan.mr.blue@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php":">=5.6",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Onlyongunz\\": "src/"
+        }
+    }
+}
