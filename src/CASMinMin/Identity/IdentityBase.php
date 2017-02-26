@@ -1,7 +1,7 @@
 <?php
 namespace Onlyongunz\CASMinMin\Identity;
 
-interface Identity {    
+interface IdentityBase {    
     /**
      * Username untuk login
      */

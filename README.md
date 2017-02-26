@@ -38,11 +38,11 @@ use Onlyongunz\CASMinMin;
 // buat service
 $service = new CASMinMin\Services\StudentPortal();
 // buat identity
-$identity = new CASMinMin\Identity\NPM('2016730011');
+$identity = new CASMinMin\Identity\NPM('2016730011', 'passwordmu123');
 
 // buat CAS Loginer, lalu lakukan login
 $cas = new CASMinMin\CASMinMin($service);
-$cas->do_login($identity, 'passwordmu123');
+$cas->do_login($identity);
 ```
 
 Sekarang anda dapat menggunakan seluruh fitur dari kelas
