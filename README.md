@@ -1,7 +1,7 @@
 # CASMinMin (CAS--)
-[![Packagist](https://img.shields.io/packagist/v/ftis-admin/cas-min-min.svg?style=flat-square)](https://github.com/ftis-admin/cas-min-min-php) 
-[![Packagist Pre Release](https://img.shields.io/packagist/vpre/ftis-admin/cas-min-min.svg?style=flat-square)](https://github.com/ftis-admin/cas-min-min-php)
-[![GitHub release](https://img.shields.io/github/release/ftis-admin/cas-min-min-php.svg?style=flat-square)](https://github.com/ftis-admin/cas-min-min-php)
+[![Packagist](https://img.shields.io/packagist/v/onlyongunz/cas-min-min-php.svg?style=flat-square)](https://packagist.org/packages/onlyongunz/cas-min-min-php) 
+[![Packagist Pre Release](https://img.shields.io/packagist/vpre/onlyongunz/cas-min-min-php.svg?style=flat-square)](https://packagist.org/packages/onlyongunz/cas-min-min-php)
+[![GitHub release](https://img.shields.io/github/release/ftis-admin/cas-min-min-php.svg?style=flat-square)](https://github.com/ftis-admin/cas-min-min-php/releases)
 [![GitHub tag](https://img.shields.io/github/tag/ftis-admin/cas-min-min-php.svg?style=flat-square)](https://github.com/ftis-admin/cas-min-min-php)
 
 Dibuat untuk membantu kita fetching data dari sitenya UNPAR
@@ -14,18 +14,10 @@ Karena ini bukan official dari BTI, mohon di ingat bahwa code ini
 tidak selamanya akan bejerja semestinya, mohon buatkan [issue](https://github.com/ftis-admin/cas-min-min-php/issues)nya
 
 ## Cara memulai
-Untuk sementara, repositori ini masih harus di clone dulu.
+Gunakan [Composer](https://getcomposer.org/) untuk download package ini... Jangan lupa dump autoloadnya. *Kita pake liblary Guzzle buat fetch datanya.*
 
 ```shell
-$ git clone https://github.com/ftis-admin/cas-min-min-php
-```
-
-Selanjutnya anda hanya tinggal panggil
-[Composer](https://getcomposer.org/) untuk install dependency
-dan dump autoloadya. *Kita pake liblary Guzzle buat fetch datanya.*
-
-```shell
-$ composer install
+$ composer require onlyongunz/cas-min-min-php
 $ composer dumpautoload --optimize
 ```
 
