@@ -1,8 +1,8 @@
 # CASMinMin (CAS--)
 [![Packagist](https://img.shields.io/packagist/v/onlyongunz/cas-min-min-php.svg?style=flat-square)](https://packagist.org/packages/onlyongunz/cas-min-min-php) 
 [![Packagist Pre Release](https://img.shields.io/packagist/vpre/onlyongunz/cas-min-min-php.svg?style=flat-square)](https://packagist.org/packages/onlyongunz/cas-min-min-php)
-[![GitHub release](https://img.shields.io/github/release/ftis-admin/cas-min-min-php.svg?style=flat-square)](https://github.com/ftis-admin/cas-min-min-php/releases)
 [![GitHub tag](https://img.shields.io/github/tag/ftis-admin/cas-min-min-php.svg?style=flat-square)](https://github.com/ftis-admin/cas-min-min-php)
+[![GitHub release](https://img.shields.io/github/release/ftis-admin/cas-min-min-php.svg?style=flat-square)](https://github.com/ftis-admin/cas-min-min-php/releases)
 
 Dibuat untuk membantu kita fetching data dari sitenya UNPAR
 yang butuh login terlebih dahulu (CAS).
