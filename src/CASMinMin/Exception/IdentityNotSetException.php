@@ -1,5 +1,5 @@
 <?php
-namespace Onlyongunz\CASMinMin;
+namespace Onlyongunz\CASMinMin\Exception;
 
 class IdentityNotSetException extends \Exception {
     public function __construct($message="", $code=0){
