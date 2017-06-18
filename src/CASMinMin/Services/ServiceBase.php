@@ -1,5 +1,5 @@
 <?php
-namespace Onlyongunz\CASMinMin\Services;
+namespace Chez14\CASMinMin\Services;
 
 interface ServiceBase {
     public function init_login();

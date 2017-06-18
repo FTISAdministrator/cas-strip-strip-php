@@ -1,5 +1,5 @@
 {
-    "name": "onlyongunz/cas-min-min-php",
+    "name": "chez14/cas-min-min-php",
     "description": "CAS UNPAR interface for php",
     "type": "library",
     "authors": [
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Onlyongunz\\": "src/"
+            "Chez14\\": "src/"
         }
     },
     "require-dev": {

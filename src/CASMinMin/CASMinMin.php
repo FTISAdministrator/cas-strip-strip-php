@@ -1,11 +1,11 @@
 <?php
-namespace Onlyongunz\CASMinMin;
+namespace Chez14\CASMinMin;
 
 /**
  * CASMinMin; CAS UNPAR interface buat program.
  * 
  * @author Gunawan Christianto
- * @package Onlyongunz/CASMinMin
+ * @package Chez14/CASMinMin
  * @link https://github.com/ftis-admin/cas-min-min-php
  */
 
@@ -13,10 +13,10 @@ namespace Onlyongunz\CASMinMin;
 /**
  * Kelas utama yang akan membantu proses login.
  * 
- * @package Onlyongunz/CASMinMin
+ * @package Chez14/CASMinMin
  * @example
  * ```php
- * use Onlyongunz\CASMinMin;
+ * use Chez14\CASMinMin;
  *
  * $service = new CASMinMin\Services\StudentPortal();
  * $identity = new CASMinMin\Identity\NPM('2016730011', 'Passwordku123');

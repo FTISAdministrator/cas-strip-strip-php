@@ -1,6 +1,6 @@
 <?php
-namespace Onlyongunz\CASMinMin\Services;
-use \Onlyongunz\CASMinMin\CASMinMin;
+namespace Chez14\CASMinMin\Services;
+use \Chez14\CASMinMin\CASMinMin;
 
 class StudentPortal implements ServiceBase {
     const

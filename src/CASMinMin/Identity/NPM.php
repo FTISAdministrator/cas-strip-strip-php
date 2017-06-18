@@ -1,5 +1,5 @@
 <?php
-namespace Onlyongunz\CASMinMin\Identity;
+namespace Chez14\CASMinMin\Identity;
 
 class NPM implements IdentityBase{
     
