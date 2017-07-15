@@ -32,34 +32,34 @@ namespace Chez14\CASMinMin;
  * @method void login_service(CASMinMin\Services\ServiceBase $service = null)
  */
 class CASMinMin {
-    protected const
+    const
         BASE_URL = "https://sso.unpar.ac.id/",
         CAS_LOGIN = "login",
         CAS_LOGOUT = "logout";
     
-    protected const
+    const
         LTPATTERN = '/<input type="hidden" name="lt" value="([a-zA-Z0-9-]+)" \/>/',
         EXPATTERN = '/<input type="hidden" name="execution" value="([\w\-\_\/\+\=]+)" \/>/',
         ERRPATTERN = '/(The credentials you provided cannot be determined to be authentic|Invalid credentials)\./i',
         SUCPATTERN = '/<h2>Log In Successful<\/h2>/i';
 
-    public const
+    const
         USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36";
     
-    protected const
+    const
         GUZZLE_SETTING=[
             'base_uri' => self::BASE_URL,
             'allow_redirects' => false,
             'headers' => [
                 'User-Agent' => self::USER_AGENT
-            ],
-            'cookies' => true
+            ]
         ];
 
     protected
         $service = null,
         $guzzleClient = null,
-        $cookieJar = null;
+        $guzzleHandlerStack = null,
+        $cookieJar = true;
 
     public
         $identity = null;
@@ -69,12 +69,13 @@ class CASMinMin {
      * @param $service default service yang akan di handlekan loginya.
      * @param $identity identitas default yang akan digunakan untuk meloginkan service.
      */
-    public function __construct(Services\ServiceBase $service=null, Identity\IdentityBase $identity) {
+    public function __construct(Services\ServiceBase $service=null, Identity\IdentityBase $identity=null) {
         if($service == null){
             $service = new Services\StudentPortal();
         }
         $this->service = $service;
         $this->identity = $identity;
+        $this->guzzleHandlerStack = \GuzzleHttp\HandlerStack::create();
     }
 
     /**
@@ -101,7 +102,8 @@ class CASMinMin {
             $this->identity=$identity;
         $identity=$this->identity;
         
-        $this->guzzleClient = new \GuzzleHttp\Client(self::GUZZLE_SETTING);
+        
+        $this->guzzleClient = new \GuzzleHttp\Client($this->buildGuzzleSetting());
         $client = $this->guzzleClient;
 
         // make session, save it to query
@@ -110,10 +112,10 @@ class CASMinMin {
         preg_match_all(self::LTPATTERN, $resp->getBody(), $lt_match);
         $ex_match = [];
         preg_match_all(self::EXPATTERN, $resp->getBody(), $ex_match);
-        echo "DUMP : ".PHP_EOL;
-        var_dump($lt_match);
-        var_dump($ex_match);
-        echo "END DUMP;".PHP_EOL;
+        //echo "DUMP : ".PHP_EOL;
+        //var_dump($lt_match);
+        //var_dump($ex_match);
+        //echo "END DUMP;".PHP_EOL;
         // build query, then fetch it
         $resp = $client->request('POST', self::CAS_LOGIN, [
             'form_params'=> [
@@ -139,7 +141,11 @@ class CASMinMin {
      */
     public function login_service(Services\Service $service=null){
         if($this->guzzleClient==null)
-            $this->login_identity();
+            if(!$this->cookieJar->toArray())
+                $this->login_identity();
+            else
+                $this->guzzleClient = new \GuzzleHttp\Client($this->buildGuzzleSetting());
+        
         $client = $this->guzzleClient;
 
         if($service!=null)
@@ -164,5 +170,38 @@ class CASMinMin {
      */
     public function login(Services\Service $service=null){
         $this->login_service($service);
+    }
+
+    /**
+     * Set file untuk Cookie Jar
+     * Digunakan agar tidak perlu login lagi saat ganti sesi
+     * @param $filePath lokasi cookie jar
+     * @param $reuseCookie gunakan cookie lama, dan timpa cookie yang ada di $filePath.
+     */
+    public function setCookieFile($filePath, $reuseCookie=false){
+        $pastCookie = [];
+        
+        if($reuseCookie)
+            $pastCookie = $this->cookieJar->toArray();
+        
+        $this->cookieJar = new \GuzzleHttp\Cookie\FileCookieJar($filePath, true);
+        
+        if($pastCookie)
+            $this->cookieJar->fromArray($pastCookie);
+    }
+
+    public function resetCookie($hardReset=true){
+        $pastCookie = $this->cookieJar->toArray();
+        $this->cookieJar = new \GuzzleHttp\Cookie\CookieJar();
+
+        if(!$hardReset)
+            $this->cookieJar->fromArray($pastCookie);
+    }
+
+    protected function buildGuzzleSetting($userDefined=[]){
+        return  array_merge(self::GUZZLE_SETTING, [
+            'handler'=>$this->guzzleHandlerStack,
+            'cookies'=>$this->cookieJar,
+            ], $userDefined);
     }
 }

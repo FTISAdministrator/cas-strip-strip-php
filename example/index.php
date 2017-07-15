@@ -1,6 +1,6 @@
 <?php
 include '../vendor/autoload.php';
-use \Onlyongunz\CASMinMin;
+use \Chez14\CASMinMin;
 
 $service = new CASMinMin\Services\StudentPortal();
 $identity = new CASMinMin\Identity\NPM('NPMAndaDiSini', 'PasswordMu123');
