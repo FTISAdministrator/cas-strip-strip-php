@@ -103,7 +103,7 @@ class CASMinMin {
         $identity=$this->identity;
         
         
-        $this->guzzleClient = new \GuzzleHttp\Client($this->buildGuzzleSetting());
+        $this->guzzleClient = new \GuzzleHttp\Client($this->build_guzzle_setting());
         $client = $this->guzzleClient;
 
         // make session, save it to query
@@ -141,7 +141,7 @@ class CASMinMin {
             if(!$this->cookieJar->toArray())
                 $this->login_identity();
             else
-                $this->guzzleClient = new \GuzzleHttp\Client($this->buildGuzzleSetting());
+                $this->guzzleClient = new \GuzzleHttp\Client($this->build_guzzle_setting());
         
         $client = $this->guzzleClient;
 
@@ -177,7 +177,7 @@ class CASMinMin {
      * @param $filePath lokasi cookie jar
      * @param $reuseCookie gunakan cookie lama, dan timpa cookie yang ada di $filePath.
      */
-    public function setCookieFile($filePath, $reuseCookie=false){
+    public function set_cookie_file($filePath, $reuseCookie=false){
         $pastCookie = [];
         
         if($reuseCookie)
@@ -197,7 +197,7 @@ class CASMinMin {
      *
      * @param $hardReset Set true untuk menyimpan cookie yang lama.
      */
-    public function resetCookie($hardReset=true){
+    public function reset_cookie($hardReset=true){
         $pastCookie = $this->cookieJar->toArray();
         $this->cookieJar = new \GuzzleHttp\Cookie\CookieJar();
 
@@ -211,7 +211,7 @@ class CASMinMin {
      *
      * @param $userDefined Settingan yang digunakan untuk Guzzle, versi pengguna.
      */
-    protected function buildGuzzleSetting($userDefined=[]){
+    protected function build_guzzle_setting($userDefined=[]){
         return  array_merge(self::GUZZLE_SETTING, [
             'handler'=>$this->guzzleHandlerStack,
             'cookies'=>$this->cookieJar,
