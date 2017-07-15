@@ -112,10 +112,7 @@ class CASMinMin {
         preg_match_all(self::LTPATTERN, $resp->getBody(), $lt_match);
         $ex_match = [];
         preg_match_all(self::EXPATTERN, $resp->getBody(), $ex_match);
-        //echo "DUMP : ".PHP_EOL;
-        //var_dump($lt_match);
-        //var_dump($ex_match);
-        //echo "END DUMP;".PHP_EOL;
+
         // build query, then fetch it
         $resp = $client->request('POST', self::CAS_LOGIN, [
             'form_params'=> [
@@ -166,6 +163,7 @@ class CASMinMin {
     /**
      * Lakukan login ke CAS(jika belum) lalu ke Service.
      * Shortcode untuk login_services
+     *
      * @param $service service yang akan di loginkan.
      */
     public function login(Services\Service $service=null){
@@ -175,6 +173,7 @@ class CASMinMin {
     /**
      * Set file untuk Cookie Jar
      * Digunakan agar tidak perlu login lagi saat ganti sesi
+     * 
      * @param $filePath lokasi cookie jar
      * @param $reuseCookie gunakan cookie lama, dan timpa cookie yang ada di $filePath.
      */
@@ -190,6 +189,14 @@ class CASMinMin {
             $this->cookieJar->fromArray($pastCookie);
     }
 
+
+    /**
+     * Gunakan ini untuk membersihkan cookie yang barusan anda load.
+     * Method ini akan membuat CookieJar baru. Dan yang lama tidak akan
+     * terpengaruh.
+     *
+     * @param $hardReset Set true untuk menyimpan cookie yang lama.
+     */
     public function resetCookie($hardReset=true){
         $pastCookie = $this->cookieJar->toArray();
         $this->cookieJar = new \GuzzleHttp\Cookie\CookieJar();
@@ -198,6 +205,12 @@ class CASMinMin {
             $this->cookieJar->fromArray($pastCookie);
     }
 
+    /**
+     *  Method untuk membuat settingan untuk Guzzle.
+     *  Agar semua otentikasi berjalan singkron (Cookienya).
+     *
+     * @param $userDefined Settingan yang digunakan untuk Guzzle, versi pengguna.
+     */
     protected function buildGuzzleSetting($userDefined=[]){
         return  array_merge(self::GUZZLE_SETTING, [
             'handler'=>$this->guzzleHandlerStack,
