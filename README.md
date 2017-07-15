@@ -12,7 +12,7 @@ yang butuh login terlebih dahulu (CAS).
 
 ## Peringatan
 Karena ini bukan official dari BTI, mohon di ingat bahwa code ini
-tidak selamanya akan bejerja semestinya, mohon buatkan [issue](https://github.com/ftis-admin/cas-min-min-php/issues)nya
+tidak selamanya akan bejerja semestinya, mohon buatkan [issue](https://github.com/chez14/cas-min-min-php/issues)nya
 
 ## Cara memulai
 Gunakan [Composer](https://getcomposer.org/) untuk download package ini... Jangan lupa dump autoloadnya. *Kita pake liblary Guzzle buat fetch datanya.*
