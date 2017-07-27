@@ -59,7 +59,7 @@ class CASMinMin {
         $service = null,
         $guzzleClient = null,
         $guzzleHandlerStack = null,
-        $cookieJar = true;
+        $cookieJar = null;
 
     public
         $identity = null;
@@ -76,6 +76,7 @@ class CASMinMin {
         $this->service = $service;
         $this->identity = $identity;
         $this->guzzleHandlerStack = \GuzzleHttp\HandlerStack::create();
+        $this->cookieJar = new \GuzzleHttp\Cookie\CookieJar();
     }
 
     /**
